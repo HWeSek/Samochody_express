@@ -1,0 +1,16 @@
+<div class="container m-5">
+    <h2>Add cars page</h2>
+    <hr>
+    <form action="/addCars" method="post" class="d-flex flex-column">
+        <label><input class="form-check-input" type="checkbox" name="insurance" value="TAK"> Ubezpieczenie</label>
+        <label><input class="form-check-input" type="checkbox" name="gasoline" value="TAK"> Benzyna</label>
+        <label><input class="form-check-input" type="checkbox" name="damaged" value="TAK"> Uszkodzony</label>
+        <label><input class="form-check-input" type="checkbox" name="IVwd" value="TAK"> Napęd 4x4</label>
+        <input type="submit" class="btn btn-dark" style="width: 90px;" value="Dodaj">
+    </form>
+    {{#if _id}}
+        <div class="container-sm p-3 mt-2 bg-success-subtle text-emphasis-success border border-success rounded-4">
+            <p style="padding: 0;margin:0; height: fit-content;">Car added to database; id = {{ _id }}</p>
+        </div>
+    {{/if}}
+</div>

@@ -1,0 +1,37 @@
+<div class="container m-5">
+    <h2>List of cars </h2>
+    <hr>
+    {{#if all_cars}}
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">_id</th>
+              <th scope="col">Ubezpieczenie</th>
+              <th scope="col">Benzyna</th>
+              <th scope="col">Uszkodzony</th>
+              <th scope="col">Napęd 4x4</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            {{#each all_cars}}
+            <tr>
+                <th scope="row">{{_id}}</th>
+                <td>{{insurance}}</td>
+                <td>{{gasoline}}</td>
+                <td>{{damaged}}</td>
+                <td>{{IVwd}}</td>
+                <td> 
+                  <button class="btn btn-dark" 
+                  onclick=" alert('ID: {{_id}},\nUbezpieczony: {{insurance}},\nBenzyna: {{gasoline}},\nUszkodzony: {{damaged}},\nNapęd 4x4: {{IVwd}}') ">INFO</button> 
+                </td>
+            </tr>
+            {{/each}}
+          </tbody>
+        </table>
+    {{else}}
+        <div class="container-sm p-3 mt-2 bg-danger-subtle text-emphasis-danger border border-danger rounded-4">
+            <p style="padding: 0;margin:0; height: fit-content;">No cars in the database yet!</p>
+        </div>
+    {{/if}}
+</div>

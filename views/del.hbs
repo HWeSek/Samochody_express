@@ -1,0 +1,54 @@
+<div class="container m-5">
+    <h2>Delete cars form data base</h2>
+    <hr>
+    {{#if all_cars}}
+    <form method="get">
+        <div>
+          <button onclick="return confirm('Are you sure you want to submit?')" type="submit" formaction="/delAll" class="btn btn-danger">Delete all</button>
+          <button type="submit" formaction="/delSelected" class="btn bg-danger-subtle border-danger">Delete selected</button>
+        </div>
+
+        {{#if removed}}
+         <p class="text-danger">Removed {{ removed }} cars</p>
+        {{/if}}
+        {{#if err_message}}
+         <p class="text-danger">{{ err_message }} </p>
+        {{/if}}
+
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">_id</th>
+              <th scope="col">Ubezpieczenie</th>
+              <th scope="col">Benzyna</th>
+              <th scope="col">Uszkodzony</th>
+              <th scope="col">Napęd 4x4</th>
+              <th></th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            {{#each all_cars}}
+            <tr>
+                <th scope="row">{{_id}}</th>
+                <td>{{insurance}}</td>
+                <td>{{gasoline}}</td>
+                <td>{{damaged}}</td>
+                <td>{{IVwd}}</td>
+                <td> 
+                  <button class="btn btn-danger" type="submit" formaction="/delSingle" name="del_id" value="{{_id}}">Delete</button> 
+                </td>
+                <td>
+                  <input type="checkbox" name="select" value="{{_id}}">
+                </td>
+            </tr>
+            {{/each}}
+          </tbody>
+        </table>
+    </form>
+    {{else}}
+        <div class="container-sm p-3 mt-2 bg-danger-subtle text-emphasis-danger border border-danger rounded-4">
+            <p style="padding: 0;margin:0; height: fit-content;">No cars in the database yet!  {{#if removed}} Removed {{ removed }} cars! {{/if}}</p>
+        </div>
+    {{/if}}
+</div>

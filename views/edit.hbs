@@ -1,0 +1,74 @@
+<div class="container m-5">
+    <h2>Edit/Update page</h2>
+    <hr>
+    {{#if all_cars}}
+      <form>
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">_id</th>
+              <th scope="col">Ubezpieczenie</th>
+              <th scope="col">Benzyna</th>
+              <th scope="col">Uszkodzony</th>
+              <th scope="col">Napęd 4x4</th>
+              {{#if id}}
+                <th></th>
+                <th></th>
+              {{else}}
+                <th></th>
+              {{/if}}
+            </tr>
+          </thead>
+          <tbody>
+            {{#each all_cars}}
+            <tr>
+                <th scope="row">{{_id}}</th>
+
+                {{#if edited}}
+                  <td><select class="form-select" name="insurance" value="{{insurance}}">
+                    <option value="TAK">Tak</option>
+                    <option value="NIE">Nie</option>
+                    <option value="BRAK">Brak danych</option>
+                  </select></td>
+                  <td><select class="form-select" name="gasoline" value="{{gasoline}}">
+                    <option value="TAK">Tak</option>
+                    <option value="NIE">Nie</option>
+                    <option value="BRAK">Brak danych</option>
+                  </select></td>
+                  <td><select class="form-select" name="damaged" value="{{damaged}}">
+                    <option value="TAK">Tak</option>
+                    <option value="NIE">Nie</option>
+                    <option value="BRAK">Brak danych</option>
+                  </select></td>
+                  <td><select class="form-select" name="IVwd" value="{{IVwd}}">
+                    <option value="TAK">Tak</option>
+                    <option value="NIE">Nie</option>
+                    <option value="BRAK">Brak danych</option>
+                  </select></td>
+
+                  <td> 
+                      <button class="btn btn-warning" formaction="/editSave" name="car_id" value="{{_id}}">Save</button> 
+                    </td>
+                    <td> 
+                      <a class="btn btn-dark" href="/editCars">Cancel</a>
+                  </td>                  
+                {{else}}
+                  <td>{{insurance}}</td>
+                  <td>{{gasoline}}</td>
+                  <td>{{damaged}}</td>
+                  <td>{{IVwd}}</td>
+                  <td> 
+                    <button class="btn btn-dark" formaction="/editCar" name="car_id" value="{{_id}}">EDIT</button> 
+                  </td>
+                {{/if}}
+            </tr>
+            {{/each}}
+          </tbody>
+        </table>
+      </form>
+    {{else}}
+        <div class="container-sm p-3 mt-2 bg-danger-subtle text-emphasis-danger border border-danger rounded-4">
+            <p style="padding: 0;margin:0; height: fit-content;">No cars in the database yet!</p>
+        </div>
+    {{/if}}
+</div>
